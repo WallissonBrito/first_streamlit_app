@@ -1,3 +1,3 @@
-import streamlit
+import streamlit as st
 
-streamlit.tittle("My Parents New Healthy Dinner")
+st.title("My Parents New Healthy Dinner")
