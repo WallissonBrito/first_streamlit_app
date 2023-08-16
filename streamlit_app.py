@@ -22,8 +22,6 @@ st.dataframe(Fruits_to_show)
 # Nova seção para mostrar fruityvice api response
 st.header("Fruityvice Fruit Advice!")
 
-st.text(fruityvice_response.json())
-
 #Normalizando dados 
 fruityvice_normalized = pd.json_normalize(fruityvice_response.json())
 # Mostrar dados em formato de tabela
