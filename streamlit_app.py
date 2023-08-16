@@ -1,8 +1,8 @@
 import streamlit as st
 import pandas as pd
-import request 
+import requests 
 
-fruityvice_response = request.get("https://fruityvice.com/api/fruit/watermelon")
+fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
 
 st.title("My Parents New Healthy Dinner")
 st.header("Breakfast Favorite")
