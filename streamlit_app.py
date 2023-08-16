@@ -20,7 +20,7 @@ Fruits_to_show = my_fruit_list.loc[fruits_selected]
 st.dataframe(Fruits_to_show)
 
 # Nova seção para mostrar fruityvice api response
-streamlit.header("Fruityvice Fruit Advice!")
+st.header("Fruityvice Fruit Advice!")
 
 st.text(fruityvice_response.json())
 
