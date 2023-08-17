@@ -33,7 +33,7 @@ fruityvice_normalized = pd.json_normalize(fruityvice_response.json())
 # Mostrar dados em formato de tabela
 st.dataframe(fruityvice_normalized)
 
-my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
+my_cnx = snowflake.connector.connect(**st.secrets["snowflake"])
 minha_cur = minha_cnx.cursor()
 my_cur.execute("SELECT CURRENT_USER(), CURRENT_ACCOUNT(), CURRENT_REGION()")
 my_data_row = my_cur.fetchone()
