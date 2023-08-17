@@ -31,18 +31,6 @@ def get_fruityvice_data(this_fruit_choice):
 # Nova seção para mostrar fruityvice api response
 streamlit.header("Fruityvice Fruit Advice!")
 
-def get_fruit_load_list():
-  with my_cnx.cursor() as my_cur:
-    my_cur.execute("SELECT * FROM fruit_load_list")
-    return my_cur.fetchall()
-
-#  Adicionando um botão
-if streamlit.button('Get Fruit Load List'):
-  #  Conexão com snowflake
-  my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
-  my_data_rows = get_fruit_load_list()
-  streamlit.dataframe(my_data_row)
-
 try:
   # Input da fruta para obter informações
   fruit_choice = streamlit.text_input('What fruit would you like information about?')
@@ -57,17 +45,22 @@ try:
 
 except URLError as e:
   streamlit.error()
-  
-#  Não executa nada após aqui 
-streamlit.stop()
-
-
-
-
 
 #  Exibir lista de frutas
 streamlit.header("The fruit load list contains:")
+def get_fruit_load_list():
+  with my_cnx.cursor() as my_cur:
+    my_cur.execute("SELECT * FROM fruit_load_list")
+    return my_cur.fetchall()
 
+#  Adicionando um botão
+if streamlit.button('Get Fruit Load List'):
+  #  Conexão com snowflake
+  my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
+  my_data_rows = get_fruit_load_list()
+  streamlit.dataframe(my_data_row)
+
+streamlit.stop()
 
 # Inserir fruta na lista
 add_my_fruit = streamlit.text_input('What fruit would you like to add?')
