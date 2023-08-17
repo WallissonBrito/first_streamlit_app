@@ -3,11 +3,11 @@ import pandas as pd
 import requests 
 import snowflake.connector
 
-st.title("My Parents New Healthy Dinner")
-st.header("Breakfast Favorite")
-st.caption("Omega 3 & Blueberry Oatmeal")
-st.caption("Kale, Spinach & Rocket Smoothie")
-st.caption("Hard-Boiled Free-Range Egg")
+streamlit.title("My Parents New Healthy Dinner")
+streamlit.header("Breakfast Favorite")
+streamlit.caption("Omega 3 & Blueberry Oatmeal")
+streamlit.caption("Kale, Spinach & Rocket Smoothie")
+streamlit.caption("Hard-Boiled Free-Range Egg")
 
 # Mostra tabela na página
 my_fruit_list = pd.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.com/dabw/fruit_macros.txt")
