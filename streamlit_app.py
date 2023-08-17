@@ -3,12 +3,6 @@ import pandas as pd
 import requests 
 import snowflake.connector
 
-#  Conector snowflake
-my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
-my_cur = my_cnx.cursor()
-my_cur.execute("SELECT CURRENT_USER(), CURRENT_ACCOUNT(), CURRENT_REGION()")
-my_data_row = my_cur.fetchone()
-
 st.title("My Parents New Healthy Dinner")
 st.header("Breakfast Favorite")
 st.caption("Omega 3 & Blueberry Oatmeal")
@@ -38,6 +32,13 @@ fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_c
 fruityvice_normalized = pd.json_normalize(fruityvice_response.json())
 # Mostrar dados em formato de tabela
 st.dataframe(fruityvice_normalized)
+
+
+#  Conector snowflake
+my_cnx = snowflake.connector.connect(**st.secrets["snowflake"])
+my_cur = my_cnx.cursor()
+my_cur.execute("SELECT CURRENT_USER(), CURRENT_ACCOUNT(), CURRENT_REGION()")
+my_data_row = my_cur.fetchone()
 
 #  Texto conector snowflake
 streamlit.text("Hello from Snowflake:")
